@@ -101,7 +101,7 @@ func (t *TreeMap) Contains(key interface{}) bool {
 }
 
 func (t *TreeMap) ContainsAll(keys []interface{}) bool {
-	for _, key := range t.entries {
+	for _, key := range keys {
 		_, present := t.entries[key]
 		if !present { return false }
 	}
@@ -109,7 +109,7 @@ func (t *TreeMap) ContainsAll(keys []interface{}) bool {
 }
 
 func (t *TreeMap) ContainsAny(keys []interface{}) bool {
-	for _, key := range t.entries {
+	for _, key := range keys {
 		_, present := t.entries[key]
 		if present { return true }
 	}
