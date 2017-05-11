@@ -1,4 +1,4 @@
-package go_tree
+package go_tree_map
 
 import (
 	"github.com/ross-oreto/go-tree"
@@ -7,7 +7,7 @@ import (
 
 type TreeMap struct {
 	entries map[interface{}]interface{}
-	keys *tree.Btree
+	keys *go_tree.Btree
 }
 
 type Entry struct {
@@ -19,7 +19,7 @@ func New() *TreeMap { return new(TreeMap).Init() }
 func (t *TreeMap) Init() *TreeMap {
 	t.entries = make(map[interface{}]interface{})
 	if t.keys == nil {
-		t.keys = tree.New()
+		t.keys = go_tree.New()
 	} else {
 		t.keys.Init()
 	}
@@ -48,7 +48,7 @@ func (t *TreeMap) PutEntries(entries []Entry) *TreeMap {
 
 func (t *TreeMap) Delete(key interface{}) *TreeMap {
 	t.keys.Delete(key)
-	t.entries[key] = nil
+	delete(t.entries, key)
 	return t
 }
 
@@ -117,7 +117,7 @@ func (t *TreeMap) ContainsAny(keys []interface{}) bool {
 }
 
 func (t *TreeMap) Len() int {
-	return t.keys.Len()
+	return len(t.entries)
 }
 
 func (t *TreeMap) Head() interface{} {
@@ -131,21 +131,21 @@ func (t *TreeMap) Tail() interface{} {
 func (t *TreeMap) Pop() interface{} {
 	key := t.keys.Pop()
 	val := t.entries[key]
-	t.entries[key] = nil
+	delete(t.entries, key)
 	return val
 }
 
 func (t *TreeMap) Pull() interface{} {
 	key := t.keys.Pull()
 	val := t.entries[key]
-	t.entries[key] = nil
+	delete(t.entries, key)
 	return val
 }
 
 func (t *TreeMap) Empty() bool {
-	return t.keys.Empty()
+	return len(t.entries) == 0
 }
 
 func (t *TreeMap) NotEmpty() bool {
-	return t.keys.NotEmpty()
+	return len(t.entries) > 0
 }
