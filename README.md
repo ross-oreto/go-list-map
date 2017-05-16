@@ -1,4 +1,8 @@
 ### Go List Map
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/ross-oreto/go-list-map/master/LICENSE)
+[![Build Status](https://travis-ci.org/ross-oreto/go-list-map.svg?branch=master)](https://travis-ci.org/ross-oreto/go-list-map)
+[![](https://goreportcard.com/badge/github.com/ross-oreto/go-list-map)](https://goreportcard.com/badge/github.com/ross-oreto/go-list-map)
+[![GoDoc](https://godoc.org/github.com/ross-oreto/go-list-map?status.svg)](https://godoc.org/github.com/ross-oreto/go-list-map)
 
 * A ordered map implementation ordered by insertion order.
 * The ordering is done using a backing list - "container/list"
@@ -13,7 +17,7 @@
  	"github.com/ross-oreto/go-list-map"
  )
  
- listMap := go_list_map.New()
+ listMap := maps.New()
  listMap.Put(1, 'Oreto').Put(2, 'Michael').Put(3, 'Ross')
  fmt.Println(listMap.Values())
 ```
