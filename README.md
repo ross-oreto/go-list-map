@@ -13,8 +13,8 @@
 #### Basic Usage
 ```
  import (
-     "fmt"
- 	"github.com/ross-oreto/go-list-map"
+ "fmt"
+ "github.com/ross-oreto/go-list-map"
  )
  
  listMap := maps.New()
